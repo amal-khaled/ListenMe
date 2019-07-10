@@ -27,6 +27,12 @@ class Media{
     
     init(){
     }
+    /*!
+     object mapping
+     
+     @param  media  media dictionary returned from server
+     
+     */
     init(media dictionary: [String: Any]? ) {
         guard let dictionary = dictionary else { return }
         
@@ -51,8 +57,13 @@ class Media{
     }
 }
 // MARK: - Seperate time and date
-
-// get date only from Date object
+/*!
+ This method returns date only from Date object
+ 
+ @param  dte  The date with formate yyyy-MM-dd'T'HH:mm:ssZ
+ 
+ @return string   date with formate yyyy-MM-dd
+ */
 public func seperateDateAndTime(_ dte: String)-> String{
     let df = DateFormatter()
     print(dte)

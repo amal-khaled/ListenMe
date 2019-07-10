@@ -16,7 +16,13 @@ class APIController{
     
     
     // MARK: - Get user Token
-
+    /*!
+     This method to connect to server to get user token
+     
+     @param  completion  completion handler
+     
+     @return Bool   true if token returnrd and false in case of failure
+     */
     func getUserToken(completion: @escaping (Bool) -> ()){
         
         
@@ -42,7 +48,7 @@ class APIController{
                 if let jsonObj = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary {
 
                     if let api_token = jsonObj!.value(forKey: "accessToken") as? String {
-                        AppDelegate.api_Token = api_token
+                        Constants.api_Token = api_token
                        print(api_token)
                         completion(true)
 
@@ -64,7 +70,14 @@ class APIController{
         
     }
     // MARK: - Get media items
+    /*!
+     This method to connect to server to get list of media
+     
+     @param  completion  completion handler
+     @param  searchText  search text that user entered
 
+     @return [Media]   Array of Media
+     */
     func getMedia(completion: @escaping ([Media]) -> (), searchText: String){
         
         var search = searchText
@@ -80,9 +93,8 @@ class APIController{
         print(url)
         var request = URLRequest(url: url)
         request.setValue( Constants.GETWAY_KEY,forHTTPHeaderField:"X-MM-GATEWAY-KEY")
-        print(AppDelegate.api_Token)
         
-        request.addValue("Bearer "+AppDelegate.api_Token, forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer "+Constants.api_Token, forHTTPHeaderField: "Authorization")
         request.addValue("Application/json", forHTTPHeaderField: "Content-Type")
         
         request.httpMethod = "GET"

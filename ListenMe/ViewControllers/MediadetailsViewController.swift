@@ -6,6 +6,19 @@
 //  Copyright © 2019 Amal Elgalant. All rights reserved.
 //
 
+/*!
+ @class MediadetailsViewController.swift
+ 
+ @brief details view controller for selected media
+ 
+ @superclass SuperClass: UIViewController
+ 
+ @author Amal Elgalant
+ @copyright  © 2019 Amal Elgalant. All rights reserved.
+ @version    1
+ */
+
+
 import UIKit
 
 class MediadetailsViewController: UIViewController {
@@ -31,7 +44,9 @@ class MediadetailsViewController: UIViewController {
     
     
     // MARK: - Set view data
-
+    /*!
+     This method to set data to all labels and imageview
+     */
     func setData(){
         titleLabel.text = media.title
         artistLabel.text = media.artist.name

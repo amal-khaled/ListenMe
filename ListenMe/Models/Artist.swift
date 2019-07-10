@@ -30,6 +30,11 @@ class Artist{
     
     init(){
     }
+    /*!
+     object mapping
+     
+     @param  artist  artist dictionary returned from server
+     */
     init(artist dictionary: [String: Any]? ) {
         guard let dictionary = dictionary else { return }
         

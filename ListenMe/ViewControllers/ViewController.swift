@@ -1,10 +1,22 @@
-//
-//  ViewController.swift
-//  ListenMe
-//
-//  Created by Amal Elgalant on 7/9/19.
-//  Copyright © 2019 Amal Elgalant. All rights reserved.
-//
+
+/*!
+ @class ViewController.swift
+ 
+ @brief main view controller contains media items list and search
+ 
+ @superclass SuperClass: UIViewController
+ @coclass    mediaItemTableViewCell
+ @helper mediaItemTableViewCell
+ 
+ @field mediaArray contain all media that will be presented
+ @field selectedIndex  inedx of selected media from tableview
+ @field searchText    text entered in searchbar
+ 
+ @author Amal Elgalant
+ @copyright  © 2019 Amal Elgalant. All rights reserved.
+ @version    1
+ */
+
 
 import UIKit
 
@@ -12,9 +24,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var itemsTableView: UITableView!
     
     var mediaArray = [Media]()
-    
-   var selectedIndex = 0
+    var selectedIndex = 0
     var searchText = ""
+    
     let refreshControl = UIRefreshControl()
 
     
@@ -39,7 +51,9 @@ class ViewController: UIViewController {
      }
     
     // MARK: - Refresh
-    
+    /*!
+     This method to load data again when pulling the screen
+     */
     @objc func refresh(){
         
         getData()
@@ -98,8 +112,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 extension ViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        
         searchBar.resignFirstResponder()
         
     }
@@ -121,7 +133,9 @@ extension ViewController: UISearchBarDelegate {
 extension ViewController{
     
     
-
+    /*!
+     This method call func getUserToken to get user token then use it to get list of media
+     */
     func getData(){
         APIController.apiController.getUserToken(completion: {success in
             if success{
@@ -131,7 +145,9 @@ extension ViewController{
             
         )
     }
-    
+    /*!
+     This method call func getMedia to get list of media
+     */
     func getItems(){
         APIController.apiController.getMedia(completion: {
             _mediaArray in

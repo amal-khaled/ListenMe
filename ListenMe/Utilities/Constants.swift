@@ -18,7 +18,9 @@ class Constants{
     static let GETWAY_KEY = "Ge6c853cf-5593-a196-efdb-e3fd7b881eca"
     
     static let GET_MEDIA_ITEMS = DOMAIN + "v2/api/sayt/flat?query="
-  
+   
+    static var api_Token = ""
+
 
     
 }
